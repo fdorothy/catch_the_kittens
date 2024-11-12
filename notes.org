@@ -1,0 +1,5 @@
+
+ - [ ] reset to last position
+ - [ ] escape pauses game and opens a quick menu
+ - [ ] pickup kittens
+ - 

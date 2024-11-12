@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://dlybd6bi5saby"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_7rttv"]
+[ext_resource type="Texture2D" uid="uid://qjjqogpo2cqu" path="res://art/man.png" id="2_sputv"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8p50g"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_sputv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oe8kh"]
+radius = 4.0
+height = 18.0
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_7rttv")
+jump_height = 64.0
+jump_time_to_peak = 0.35
+jump_time_to_descent = 0.25
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, 7)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_8p50g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 7)
+shape = SubResource("CapsuleShape2D_oe8kh")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(1, 7)
+zoom = Vector2(3, 3)
+position_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true

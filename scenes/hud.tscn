@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://b5lhntistarhr"]
+
+[ext_resource type="Texture2D" uid="uid://bjschsoif72rq" path="res://art/spritesheet.png" id="1_dnws3"]
+[ext_resource type="Texture2D" uid="uid://dtqt7faodjyge" path="res://art/kitten.png" id="2_846qe"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rjkrp"]
+atlas = ExtResource("1_dnws3")
+region = Rect2(32, 64, 16, 16)
+
+[node name="HUD" type="CanvasLayer"]
+
+[node name="KittenBox" type="TextureRect" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_rjkrp")
+
+[node name="Kitten" type="TextureRect" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = 15.0
+offset_right = 20.0
+offset_bottom = 55.0
+grow_horizontal = 2
+scale = Vector2(2, 2)
+texture = ExtResource("2_846qe")
+expand_mode = 2
+stretch_mode = 4
