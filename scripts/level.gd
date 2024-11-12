@@ -8,6 +8,8 @@ func _ready() -> void:
 	$Door.connect("body_entered", on_door_entered)
 	$Kitten.connect("body_entered", on_kitten_entered)
 	$HUD/Kitten.hide()
+	for bat in get_tree().get_nodes_in_group("bats"):
+		bat.on_hit.connect(on_hit_enemy)
 	
 func on_door_entered(body):
 	if body.name == "Player":
@@ -22,3 +24,9 @@ func on_kitten_entered(body):
 		has_kitten = true
 		$HUD/Kitten.show()
 		$Kitten.queue_free.call_deferred()
+
+func on_hit_enemy():
+	reload_level.call_deferred()
+
+func reload_level():
+	get_tree().reload_current_scene()
