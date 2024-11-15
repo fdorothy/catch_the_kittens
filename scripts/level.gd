@@ -7,9 +7,19 @@ var has_kitten = false
 func _ready() -> void:
 	$Door.connect("body_entered", on_door_entered)
 	$Kitten.connect("body_entered", on_kitten_entered)
-	$HUD/Kitten.hide()
+	
+	# add the hud
+	var hud_scene = load("res://scenes/hud.tscn")
+	var instance = hud_scene.instantiate()
+	add_child(instance)
+	instance.connect("on_reset", on_reset)
+	
 	for bat in get_tree().get_nodes_in_group("bats"):
 		bat.on_hit.connect(on_hit_enemy)
+		
+	
+func on_reset():
+	get_tree().reload_current_scene()
 	
 func on_door_entered(body):
 	if body.name == "Player":

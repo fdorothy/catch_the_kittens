@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
-const MAX_SPEED = 200.0
+const MAX_SPEED = 150.0
 const ACCEL = 350.0
-const DEACCEL = 600.0
+const DEACCEL = 1000.0
 const MIDDLE = 0.0
 
 @export var jump_height : float

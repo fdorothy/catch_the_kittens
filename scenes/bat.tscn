@@ -53,7 +53,6 @@ animations = [{
 radius = 3.04138
 
 [node name="Bat" type="Area2D"]
-position = Vector2(-154, -94)
 scale = Vector2(2, 2)
 script = ExtResource("1_4yc5t")
 
