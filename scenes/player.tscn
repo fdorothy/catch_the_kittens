@@ -25,12 +25,10 @@ jump_time_to_peak = 0.35
 jump_time_to_descent = 0.25
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(1, 7)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_8p50g")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, 7)
 shape = SubResource("CapsuleShape2D_oe8kh")
 
 [node name="Camera2D" type="Camera2D" parent="."]

@@ -14,6 +14,9 @@ const MIDDLE = 0.0
 @onready var fall_gravity : float = (2.0 * jump_height) / (jump_time_to_descent * jump_time_to_descent)
 
 var is_jumping : bool = false
+var switched_gravity : bool = false
+var switch_velocity : float = 0.0
+var below : bool = true
 
 func get_gravity_scalar() -> float:
 	return jump_gravity if is_jumping else fall_gravity
@@ -61,6 +64,22 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, direction * MAX_SPEED, ACCEL * delta)
 	else:
 		velocity.x = move_toward(velocity.x, 0, DEACCEL * delta)
+	
+	# are we on the ground? if so then make sure we
+	#  reset the first switch bool
+	if is_on_floor() or is_on_ceiling():
+		switched_gravity = false
+	
+	# figure out if we have just switched gravity
+	if below != is_below():
+		if !switched_gravity:
+			switch_velocity = abs(velocity.y * 1.1)
+			switched_gravity = true
+		if is_below():
+			velocity.y = switch_velocity
+		else:
+			velocity.y = -switch_velocity
+		below = is_below()
 
 	move_and_slide()
 
